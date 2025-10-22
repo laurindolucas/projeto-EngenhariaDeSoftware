@@ -25,7 +25,28 @@
     </header>
 
     <main class="main-content">
+        <section class="search-section">
+            <form class="formCep" id="formCep">
+                <div class="input-group">
+                    <input type="text" class="buscarCep" id="cepInput" placeholder="Digite o CEP (ex: 12345-100)" maxlength="9">
+                    <input type="text" id="cidadeInput" placeholder="Buscar por cidade">
 
+                    <button type="submit" class="bntBuscarCep" id="searchBtn">
+                        <i class="fas fa-search"></i> Buscar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <div id="loading" class="loading hidden">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Buscando informações...</p>
+        </div>
+
+        <div id="error-message" class="error-message hidden">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p id="error-text"></p>
+        </div>
     </main>
 </div>
 
