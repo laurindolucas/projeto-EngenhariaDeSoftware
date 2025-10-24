@@ -34,68 +34,67 @@ O projeto foi desenvolvido como parte da disciplina de **Engenharia de Software*
 - **LocalStorage** – Armazenamento de favoritos e histórico.
 
 ---
+🚀 Como Usar
 
-## Como Executar Localmente
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/weather-finder.git
-Acesse o diretório do projeto:
+### Configuração Local
 
-bash
-Copiar código
-cd weather-finder
-Crie uma conta no OpenWeather e obtenha sua API Key.
+1. **Crie uma conta no OpenWeather**
+   - Acesse [OpenWeather](https://openweathermap.org/)
+   - Obtenha sua API Key
 
-Adicione a chave no arquivo de configuração ou no código onde é feita a requisição à API.
+2. **Configure a API Key**
+   - Adicione a chave no arquivo de configuração
+   - Ou insira diretamente no código onde é feita a requisição à API
 
-Abra index.html no seu navegador.
+3. **Execute o projeto**
+   - Abra `index.html` no seu navegador
 
-Deploy Online
+### Deploy Online
+
 Você pode acessar o site diretamente através do link de deploy:
-Acesse o Weather Finder
 
-(Substitua o # pelo link real do deploy)
+**[Acesse o Weather Finder](#)** 
+---
 
-Estrutura do Projeto
-bash
-Copiar código
+## 📁 Estrutura do Projeto
+```
 weather-finder/
 │
+├─ github               # Configuração do actions
 ├─ index.html           # Página principal
 ├─ style.css            # Estilos do projeto
 ├─ script.js            # Lógica JavaScript
 ├─ README.md            # Este arquivo
 └─ assets/              # Imagens e ícones utilizados
-Contribuição
-Para contribuir:
-
-Faça um fork do repositório.
-
-Crie uma branch para sua feature:
-
-bash
-Copiar código
-git checkout -b minha-feature
-Faça suas alterações e commit:
-
-bash
-Copiar código
-git commit -m "Descrição da alteração"
-Envie para o repositório remoto:
-
-bash
-Copiar código
-git push origin minha-feature
-Abra um Pull Request.
-
-Licença
-Este projeto está sob a licença MIT.
-
-yaml
-Copiar código
+```
 
 ---
 
-Se você quiser, posso também **adicionar badges do OpenWeather e estilo de badges coloridos para frontend e testes**, deixando o README mais visual e “profissional de portfólio”.  
+## 🤝 Contribuição
 
-Quer que eu faça essa versão completa com badges coloridos extras?
+Siga os passos abaixo para contribuir com o projeto:
+
+1. **Faça um fork do repositório**
+
+2. **Crie uma branch para sua feature:**
+```bash
+   git checkout -b minha-feature
+```
+
+3. **Faça suas alterações e commit:**
+```bash
+   git commit -m "Descrição da alteração"
+```
+
+4. **Envie para o repositório remoto:**
+```bash
+   git push origin minha-feature
+```
+
+5. **Abra um Pull Request**
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença **MIT**.
