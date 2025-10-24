@@ -234,3 +234,132 @@ function addToHistory(locationData, weatherData) {
     loadHistory();
 }
 
+
+async function searchFromHistory(cep) {
+    cepInput.value = formatCep(cep);
+    await searchLocationAndWeather(cep);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function removeFromHistory(cep) {
+    const history = getHistory();
+    const filteredHistory = history.filter((entry) => entry.cep !== cep);
+    localStorage.setItem("weatherAppHistory", JSON.stringify(filteredHistory));
+    loadHistory();
+}
+
+function removeFromFavorites(cep) {
+    const favorites = getFavorites();
+    const filteredFavorites = favorites.filter((fav) => fav.cep !== cep);
+    localStorage.setItem("weatherAppFavorites", JSON.stringify(filteredFavorites));
+    loadFavorites();
+
+    if (currentLocationData && currentLocationData.cep === cep) {
+        updateFavoriteButton();
+    }
+}
+
+function clearHistory() {
+    if (confirm("Tem certeza que deseja limpar todo o histórico?")) {
+        localStorage.removeItem("weatherAppHistory");
+        loadHistory();
+    }
+}
+
+function clearFavorites() {
+    if (confirm("Tem certeza que deseja limpar todos os favoritos?")) {
+        localStorage.removeItem("weatherAppFavorites");
+        loadFavorites();
+        updateFavoriteButton();
+    }
+}
+
+function showLoading() {
+    loading.classList.remove("hidden");
+    searchBtn.disabled = true;
+}
+
+function hideLoading() {
+    loading.classList.add("hidden");
+    searchBtn.disabled = false;
+}
+
+function showError(message) {
+    errorText.textContent = message;
+    errorMessage.classList.remove("hidden");
+}
+
+function hideError() {
+    errorMessage.classList.add("hidden");
+}
+
+function showResults() {
+    results.classList.remove("hidden");
+}
+
+function hideResults() {
+    results.classList.add("hidden");
+}
+async function searchWeatherByCity(city) {
+    showLoading();
+    hideError();
+    hideResults();
+
+    try {
+        const coordinates = await fetchCoordinatesOnlyCity(city);
+        const weatherData = await fetchWeatherDataFromCoordinates(coordinates);
+
+        currentLocationData = {
+            cep: "N/A",
+            logradouro: "N/A",
+            bairro: "N/A",
+            localidade: city,
+            uf: "N/A"
+        };
+
+        currentWeatherData = weatherData;
+
+        displayLocationData(currentLocationData);
+        displayWeatherData(currentWeatherData);
+        updateFavoriteButton();
+        showResults();
+    } catch (error) {
+        showError(error.message || "Erro ao buscar clima da cidade.");
+    } finally {
+        hideLoading();
+    }
+    toggleCepInfo(false);
+
+}
+async function fetchCoordinatesOnlyCity(city) {
+    const query = `${city},BR`;
+    const url = `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${WEATHER_API_KEY}`;
+
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Erro ao buscar coordenadas.");
+
+    const data = await response.json();
+    if (data.length === 0) throw new Error("Cidade não encontrada.");
+
+    return {
+        lat: data[0].lat,
+        lon: data[0].lon,
+    };
+}
+
+async function fetchWeatherDataFromCoordinates({ lat, lon }) {
+    const url = `${WEATHER_API_URL}?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric&lang=pt_br`;
+
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Erro ao consultar dados do clima.");
+
+    const weatherData = await response.json();
+    weatherData.coord = { lat, lon };
+    return weatherData;
+}
+function toggleCepInfo(show) {
+    const cepInfo = document.getElementById("containerInfoCep");
+    if (cepInfo) {
+        cepInfo.style.display = show ? "block" : "none";
+    }
+}
