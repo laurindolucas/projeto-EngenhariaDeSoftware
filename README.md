@@ -1,9 +1,9 @@
 # Weather Finder 🌤️
 
-![GitHub Repo Size](https://img.shields.io/github/repo-size/seu-usuario/weather-finder)
-![GitHub last commit](https://img.shields.io/github/last-commit/seu-usuario/weather-finder)
-![GitHub issues](https://img.shields.io/github/issues/seu-usuario/weather-finder)
-![GitHub Actions](https://img.shields.io/github/workflow/status/seu-usuario/weather-finder/Testes%20Automáticos)
+![GitHub Repo Size](https://img.shields.io/github/repo-size/laurindolucas/projeto-EngenhariaDeSoftware)
+![GitHub last commit](https://img.shields.io/github/last-commit//laurindolucas/projeto-EngenhariaDeSoftware)
+![GitHub issues](https://img.shields.io/github/issues//laurindolucas/projeto-EngenhariaDeSoftware)
+![GitHub Actions](https://img.shields.io/github/workflow/status//laurindolucas/projeto-EngenhariaDeSoftware/Testes%20Automáticos)
 
 ## Descrição do Projeto
 O **Weather Finder** é um site de busca de clima que permite ao usuário consultar informações meteorológicas de qualquer cidade ou CEP.  
